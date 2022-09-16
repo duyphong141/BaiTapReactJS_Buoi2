@@ -12,19 +12,18 @@ export default class ChangeGlass extends Component {
         desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. "
     }
 
-    showGlass = (id) => {
-        let glassShow = this.glassList.find(item => item.id === id)
+    showGlass = (item) => {
         this.setState({
-            imgURL: `${glassShow.url}`,
-            name: `${glassShow.name}`,
-            price: `${glassShow.price}`,
-            desc: `${glassShow.desc}`
+            imgURL: `${item.url}`,
+            name: `${item.name}`,
+            price: `${item.price}`,
+            desc: `${item.desc}`
         })
     }
 
     renderGlassList = () => {
         return this.glassList.map((item, index) => {
-            return <img key={index} className='glass-item col-2 img-fluid' src={item.url} onClick={() => {this.showGlass(item.id)}} alt="" />
+            return <img key={`glasses-${index}`} className='glass-item col-2 img-fluid' src={item.url} onClick={() => {this.showGlass(item)}} alt="" />
         })
     }
 
